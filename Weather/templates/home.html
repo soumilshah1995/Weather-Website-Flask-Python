@@ -2,7 +2,7 @@
 {% block content %}
 
 <div id="Outer" class="jumbotron jumbotron-fluid">
-  <h1 style="color:white; text-align:center; font-size:60px;">Bridgeport Weather </h1>
+  <h1 style="color:white; text-align:center; font-size:60px;"> Weather </h1>
 
   <div class="container">
     <h1 id="Weather"class="display-4"> Todays Weather </h1>
@@ -21,13 +21,31 @@
             <h2 style="color:white; font-size:30px;" > Wind Direction  {{data["vt1observation"]["windDirDegrees"]}}<sup>o</sup>  {{data["vt1observation"]["windDirCompass"]}}</h2>
             <h2 style="color:white; font-size:30px;" > Humidity  {{data["vt1observation"]["humidity"]}} %</h2>
             <h2 style="color:white; font-size:30px;" > Dew Point  {{  data["vt1observation"]["dewPoint"]  }} </h2>
+            <br>
+            <br>
+
+            <form class="" action="{{ url_for('index') }}" method="POST">
+
+                <div id="searchbar" class="form-group">
+                  {{  form.hidden_tag()  }}
+                  {{ form.search(placeholder = "Enter Zip Code ", class="form-group" ) }}
+                  {{ form.button( class = 'btn btn-dark'  )  }}
+                </div>
+
+           </form>
       </div>
-
   </div>
-
 </div>
 
 <style type="text/css">
+
+
+  #searchbar{
+    padding:10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;}
 
   .Degree{
     font-size:45px;
@@ -42,7 +60,7 @@
       margin-left: auto;
       margin-right: auto;
       margin-top:8%;
-      width: auto;
+      width: 600px;
       height: auto;
       padding: 10px;
       background-color:rgba(62, 81, 229, 1);}
